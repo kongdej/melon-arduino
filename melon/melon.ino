@@ -329,8 +329,8 @@ void mixAB() {
   }
  
   lcd.clear();
-//  lcdPrint(0,0,">Rec Valve Open ");digitalWrite(relayNo[VALVEREC],HIGH);
-//  delay(3000);
+  lcdPrint(0,0,">Rec Valve Open ");digitalWrite(relayNo[VALVEREC],HIGH);
+  delay(3000);
   lcdPrint(0,1,">Main Pump Start");digitalWrite(relayNo[PUMPMAIN],HIGH);
   
   hh=digitalRead(LEVEL_HH);
@@ -365,6 +365,7 @@ void mixAB() {
   delay(3000);
   digitalWrite(relayNo[VALVEREC],LOW);
   lcd.clear();
+  resetFunc();
 }
 
 //***==Fuction: dosing step for AB pump =================================//
@@ -392,7 +393,6 @@ void dosing() {
       prvTickDosingWait=millis();
       prvTickDosing=millis(); 
       lcd.setCursor(15,3);lcd.print("     ");   
-      resetFunc();
   }
   
   if (digitalRead(relayNo[PUMPA]) || digitalRead(relayNo[PUMPB])) {
